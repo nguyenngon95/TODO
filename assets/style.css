@@ -57,6 +57,14 @@ h1 {
     background-color: #bbb;
 }
 
+.btn-success {
+    background-color: #4CAF50;
+}
+
+.btn-success:hover {
+    background-color: #3e8e41;
+}
+
 .btn-info {
     background-color: #39bff8;
 }

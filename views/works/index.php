@@ -2,6 +2,7 @@
 <h1>TO DO LIST</h1>
 
 <div class="header-list">
+    <a href="/calendar" class="btn btn-success">View calendar</a>
     <a href="/add" class="btn btn-add">Add work</a>
 </div>
 

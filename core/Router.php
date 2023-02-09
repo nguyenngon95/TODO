@@ -15,6 +15,8 @@ class Router
         $this->get('edit/{id}', 'WorkController', 'edit');
         $this->post('edit/{id}', 'WorkController', 'update');
         $this->get('delete/{id}', 'WorkController', 'delete');
+
+        $this->get('calendar', 'WorkController', 'calendar');
     }
 
     public function get($path, $controller, $method)

@@ -106,4 +106,18 @@ class WorkController
 
         return redirect('');
     }
+
+    public function calendar()
+    {
+        $data = $this->work->select(
+            'name as title, start_date as start, end_date as end'
+        );
+
+        // add random color for each work
+        foreach ($data as $key => $value) {
+            $data[$key]['color'] = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        }
+
+        return view('works/calendar', compact('data'));
+    }
 }
