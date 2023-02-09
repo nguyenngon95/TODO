@@ -1,0 +1,14 @@
+{
+    "name": "ngonnguyen/todo",
+    "description": "ToDo List",
+    "authors": [
+        {
+            "name": "ngonnguyen"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4.0",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
