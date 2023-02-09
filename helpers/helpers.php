@@ -24,3 +24,10 @@ if (!function_exists('dd')) {
         echo '</pre>';
     }
 }
+
+if (!function_exists('view_path')) {
+    function view_path($path)
+    {
+        return $_SERVER['DOCUMENT_ROOT'] . "/views/{$path}";
+    }
+}
