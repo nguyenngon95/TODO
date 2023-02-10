@@ -53,6 +53,8 @@ class Model
 
             $q = $this->database->prepare($sql);
             $q->execute();
+
+            return true;
         } catch (\PDOException $e) {
             $this->handlePDOException($e);
         }
@@ -75,6 +77,8 @@ class Model
             
             $q = $this->database->prepare($sql);
             $q->execute();
+
+            return true;
         } catch (\PDOException $e) {
             $this->handlePDOException($e);
         }
@@ -86,6 +90,8 @@ class Model
             $sql = "delete from $this->tableName where $where";
             $q = $this->database->prepare($sql);
             $q->execute();
+
+            return true;
         } catch (\PDOException $e) {
             $this->handlePDOException($e);
         }
@@ -94,7 +100,6 @@ class Model
     protected function handlePDOException($e)
     {
         $error = 'DB error: ' . $e->getMessage();
-        view('error', compact('error'));
-        exit;
+        return view('error', compact('error'));
     }
 }

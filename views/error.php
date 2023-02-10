@@ -1,4 +1,4 @@
-<?php include 'layouts/header.php'; ?>
+<?php include view_path('layouts/header.php'); ?>
 
 <h1>Error</h1>
 
@@ -6,4 +6,4 @@
 
 <a href="/">Back to list</a>
 
-<?php include 'layouts/footer.php'; ?>
+<?php include view_path('layouts/footer.php'); ?>

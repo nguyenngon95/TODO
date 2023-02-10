@@ -10,7 +10,7 @@ class WorkController
 
     public function __construct()
     {
-        $this->work = new Work;
+        $this->work = new Work();
     }
 
     public function index()
@@ -33,15 +33,15 @@ class WorkController
         $status = $_POST['status'];
 
         if (!$name || !$startDate || !$endDate || !$status) {
-            return view('works/add-edit', ['error' => 'Please fill all fields!']);
+            return view('works/add-edit', ['error' => 'Please fill all fields!'], 422);
         }
 
         if ($startDate > $endDate) {
-            return view('works/add-edit', ['error' => 'Start date must be less than end date!']);
+            return view('works/add-edit', ['error' => 'Start date must be less than end date!', 422]);
         }
         
         $this->work->insert([
-            'name' => $name,
+            'nae' => $name,
             'start_date' => $startDate,
             'end_date' => $endDate,
             'status' => $status
@@ -67,7 +67,13 @@ class WorkController
     {
         $id = $_POST['id'];
 
-        $work = $this->work->select('*', "id = {$id}")[0];
+        $work = $this->work->select('*', "id = {$id}");
+
+        if (!count($work)) {
+            return view('error', ['error' => '404 Not Found!'], 404);
+        }
+
+        $work = $work[0];
 
         $name = $_POST['name'];
         $startDate = $_POST['start_date'];
@@ -78,14 +84,14 @@ class WorkController
             return view('works/add-edit', [
                 'error' => 'Please fill all fields!',
                 'work' => $work
-            ]);
+            ], 422);
         }
 
         if ($startDate > $endDate) {
             return view('works/add-edit', [
                 'error' => 'Start date must be less than end date!',
                 'work' => $work
-            ]);
+            ], 422);
         }
 
         $this->work->update([

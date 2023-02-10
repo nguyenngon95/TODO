@@ -1,8 +1,9 @@
 <?php
 
 if (!function_exists('view')) {
-    function view($view, $data = [])
+    function view($view, $data = [], $statusCode = 200)
     {
+        http_response_code($statusCode);
         $view = str_replace('.', '/', $view);
         extract($data);
         require "views/{$view}.php";
@@ -28,6 +29,6 @@ if (!function_exists('dd')) {
 if (!function_exists('view_path')) {
     function view_path($path)
     {
-        return $_SERVER['DOCUMENT_ROOT'] . "/views/{$path}";
+        return dirname(__FILE__) . "/../views/{$path}";
     }
 }
