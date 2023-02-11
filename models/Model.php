@@ -100,6 +100,6 @@ class Model
     protected function handlePDOException($e)
     {
         $error = 'DB error: ' . $e->getMessage();
-        return view('error', compact('error'));
+        return view('error', compact('error'), 500);
     }
 }

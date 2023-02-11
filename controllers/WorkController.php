@@ -40,14 +40,16 @@ class WorkController
             return view('works/add-edit', ['error' => 'Start date must be less than end date!', 422]);
         }
         
-        $this->work->insert([
-            'nae' => $name,
+        $result = $this->work->insert([
+            'name' => $name,
             'start_date' => $startDate,
             'end_date' => $endDate,
             'status' => $status
         ]);
 
-        return redirect('');
+        if ($result) {
+            return redirect('');
+        }
     }
 
     public function edit()
@@ -94,23 +96,27 @@ class WorkController
             ], 422);
         }
 
-        $this->work->update([
+        $result = $this->work->update([
             'name' => $name,
             'start_date' => $startDate,
             'end_date' => $endDate,
             'status' => $status
         ], "id = {$id}");
 
-        return redirect('edit/' . $id);
+        if ($result) {
+            return redirect('edit/' . $id);
+        }
     }
 
     public function delete()
     {
         $id = $_GET['id'];
         
-        $this->work->delete("id = {$id}");
+        $result = $this->work->delete("id = {$id}");
 
-        return redirect('');
+        if ($result) {
+            return redirect('');
+        }
     }
 
     public function calendar()
